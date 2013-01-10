@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>CoffeeScript - JavaScript in a simple way</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section>
+                    <p><img src="images/CoffeeScript.png"></p>
+                    <h2>JavaScript in a simple way</h2>
+                    <small>
+                        Created by Scott Barr and Marcin Maruszak
+                    </small>
+                </section>
+
+                <section>
+
+                    <section>
+                        <h1>Facts</h1>
+                    </section>
+
+                    <section>
+                        <p><b>CoffeeScript</b> is a programming language that transcompiles to JavaScript</p>
+                        <small class="fragment roll-in">
+                            <a target="_blank" href="https://github.com/jashkenas/coffee-script/wiki/List-of-languages-that-compile-to-JS">not the only one</a>
+                        </small>
+                    </section>
+
+                    <section>
+                        <img src="images/jeremy-ashkenas.png">
+                        <p>Created by Jeremy Ashkenas in December 2009</p>
+                        <img style="background-color: #ffffff;" class="fragment roll-in" width="300" src="images/backbone.png">
+                        <img style="background-color: #ffffff;" class="fragment roll-in" width="300" src="images/underscore.png">
+                    </section>
+
+                    <section>
+                        <h1>The Golden Rule</h1>
+                        <p>It's just JavaScript</p>
+                    </section>
+
+                    <section>
+                        <h3>Correction - THE GOOD PARTS OF JAVASCRIPT</h3>
+                        <p><img src="images/crockford.jpg" height="287" width="500"></p>
+                        <p>Doug Crockford on Coffeescript:</p>
+                        <p class="fragment roll-in" style="font-style: italic; font-size: 0.75em;">“I think CoffeeScript is clearly good stuff. CoffeeScript is elegant it sort of takes the good parts, removes all of the stupid awful syntax that were inherited from the wrong languages, replaces it with something that is small and elegant and expressive. CoffeeScript is really great. And CoffeeScript is having a big influence on the ECMA Script committee….. CoffeeScript is definitely in the right direction and I would like to see future languages looking more like CoffeeScript than like C.”</p>
+                    </section>
+
+                    <section>
+                        <p>Adds syntactic sugar inspired by <span style="color: orange;">Ruby</span>, <span style="color: orange;">Python</span> and <span style="color: orange;">Haskell</span></p>
+                    </section>
+
+                    <section>
+                        <p>Passes through JavaScript Lint without warnings</p>
+                        <p><strong style="color: orange;">Strict Mode</strong> early syntax errors at compile time</p>
+                    </section>
+
+                    <section>
+                        <p>Will work in every JavaScript runtime</p>
+                    </section>
+
+                    <section>
+                        <h2>CoffeeScript in real projects</h2>
+                        <p>
+                            <img style="background-color: #ffffff;" class="fragment roll-in" width="300" src="images/trello.jpg">
+                            <img style="background-color: #ffffff;" class="fragment roll-in" width="300" src="images/dropbox.png">
+                        </p>
+                        <p>
+                            <img style="background-color: #ffffff;" class="fragment roll-in" src="images/airbnb.png">
+                            <img style="background-color: #ffffff;" class="fragment roll-in" src="images/basecamp.png">
+                        </p>
+                        <p>
+                            <img style="background-color: #ffffff;" class="fragment roll-in" width="300" src="images/github.png">
+                        </p>
+                        <p class="fragment roll-in">
+                            <a target="_blank" href="https://github.com/jashkenas/coffee-script/wiki/In-The-Wild">and much more</a>
+                        </p>
+                    </section>
+
+                </section>
+
+                <section>
+
+                    <section>
+                        <h1>Language Reference</h1>
+                    </section>
+
+                    <section>
+                        <h3>Quick Intro</h3>
+                        <ul>
+                            <li>Significant Whitespace instead of curly braces</li>
+                            <li>No semi-colons - Just ending the line will do!</li>
+                            <li>The final statement in a code block is the return value (unless return specified above)</li>
+                            <li><span style="color: orange;">this</span> becomes <span style="color: orange;">@</span></li>
+                            <li>No global namespace pollution!</li>
+                        </ul>
+                    </section>
+
+                </section>
+
+                <section>
+
+                    <section>
+                        <h1>Strings</h1>
+                    </section>
+
+                    <section>
+                        <h3>Coffeescript provides ruby-like syntax for string interpolation.</h3>
+
+                        <div class="fragment roll-in">
+                            <p>We've probably all down something like this in javascript:</p>
+                            <pre><code>
+var name = "Skyscanner";
+var crowd = "employees";
+var hello = "Hello " + name + " " + crowd;
+# or
+var hello = ["Hello", name, crowd].join(' ');
+                            </code></pre>
+                        </div>
+
+                        <div class="fragment roll-in">
+                            <p>With coffeescript we can do:</p>
+                            <pre><code>
+name = "Skyscanner"
+crowd = "employees"
+hello = "Hello #{name} #{crowd}"
+                            </code></pre>
+                        </div>
+
+                    </section>
+
+                    <section>
+                        <p>Multiline strings are allowed in CoffeeScript:</p>
+                        <pre><code>
+mobyDick = "Call me Ishmael. Some years ago --
+never mind how long precisely -- having little
+or no money in my purse, and nothing particular
+to interest me on shore, I thought I would sail
+about a little and see the watery part of the
+world..."
+                        </code></pre>
+
+                        <div class="fragment roll-in">
+                            <p>Block strings for indentation-sensitive text:</p>
+                            <pre><code>
+mobyDick = """
+Call me Ishmael. Some years ago --
+        never mind how long precisely -- having little
+            or no money in my purse, and nothing particular
+                to interest me on shore, I thought I would sail
+                    about a little and see the watery part of the
+                        world...
+           """
+                            </code></pre>
+
+                        </div>
+                    </section>
+
+
+                </section>
+
+                <section>
+
+                    <section>
+                        <h1>Functions</h1>
+                    </section>
+
+                    <section>
+                        <p>Functions are defined by an optional list of parameters in parentheses, an arrow, and the function body</p>
+
+                        <pre class="fragment roll-in"><code>
+# CoffeeScript
+square = (x) -> x * x
+                        </code></pre>
+
+                        <pre class="fragment roll-in"><code>
+// JavaScript
+var square = function(x) {
+    return x * x;
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>We can even pass in default argument values!</p>
+                        <pre class="fragment roll-in"><code>
+square = (x = 5) -> x * x
+
+square() # 25
+square(3) # 9
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>CoffeeScript also provides a nice and useful keyword for self invoking functions:</p>
+                        <pre class="fragment roll-in"><code>
+# CoffeeScript
+do -> console.log 'Hi Skyscanner'
+                        </code></pre>
+                        <pre class="fragment roll-in"><code>
+// JavaScript
+(function() {
+  return console.log('Hi Skyscanner');
+})();
+                        </code></pre>
+                    </section>
+                    
+                    <section>
+                        <h3>Function binding</h3>
+
+                        <div class="fragment roll-in">
+                            <p>How many times do you have to do this?!</p>
+                            <pre><code>
+var name = 'Scott';
+var user = function() {
+    var _this = this;
+    $('#container').on('click', function() {
+        console.log(_this.name);
+    });
+};
+                            </code></pre>
+                        </div>
+
+                        <div class="fragment roll-in">
+                            <p>The fat arrow is what you want!</p>
+                            <pre><code>
+name = 'Scott'
+user = ->
+    $('#container').on 'click', => console.log @name
+                            </code></pre>
+                        </div>
+
+                    </section>
+
+                </section>
+
+                <section>
+
+                    <section>
+                        <h1>Conditionals</h1>
+                    </section>
+                    <section>
+                        <p>Very simple and understandable!</p>
+                        <pre><code>
+if weekend
+    mood = "happy!"
+    pub = true
+else
+    mood = "crabbit!"
+    pub = false
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Ternary</p>
+                        <pre><code>
+mood = if weekend then "happy!" else "crabbit!"
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Unless statement</p>
+                        <pre><code>
+mood = "crabbit!" unless weekend
+# equal to
+mood = "crabbit!" if not weekend
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>JavaScript can have some odd behaviour when using <span style="color:orange">==</span> and <span style="color:orange">!=</span></p>
+                        <pre><code>
+"2.0" == 2
+# true!?
+
+"2.0000000000000001" == 2
+# true again!
+                        </code></pre>
+                        <p>This is because it performs no type conversion when using this operator.</p>
+                    </section>
+
+                    <section>
+                        <h3>Use <span style="color:orange">is</span> and <span style="color:orange">isnt</span></h3>
+                        <p>Thankfully JavaScript does provide us with <span style="color:orange">===</span> and <span style="color:orange">!==</span> </p>
+                        <p>Coffeescript provides us with the <span style="color:orange">is</span> and <span style="color:orange">isnt</span> keywords</p>
+                        <pre><code>
+val = if square(3) is 9 then true else false
+# equal to
+val = square(3) is 9
+                        </code></pre>
+
+                        <pre><code>
+volume = if music isnt "Justin Bieber" then 11 else 0
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Existance Operator</h3>
+                        <p>I'm sure many of us have mucked around with JavaScript's indexOf() method.</p>
+                        <p>Coffeescript provides us with a neat little trick to check existance.</p>
+                        <pre><code>
+bands = ['rolling stones', 'lynyrd skynyrd', 'led zep']
+alert('turn it up!') if 'led zep' in bands
+                        </code></pre>
+                    </section>
+
+                </section>
+
+                <section>
+
+                    <section>
+                        <h1>Loops and Comprehensions</h1>
+                    </section>
+
+                    <section>
+                        <h3>CoffeeScript provides us with two different kinds of for loops:</h3>
+
+                        <div class="fragment roll-in">
+                            <p>iterating over an array</p>
+                            <pre><code>
+console.log(food) for food in ['broccoli', 'spinach', 'chocolate']
+                            </code></pre>
+                        </div>
+
+                        <div class="fragment roll-in">
+                            <p>iterating over the properties of an object</p>
+                            <pre><code>
+console.log(key, value) for key, value of document
+                            </code></pre>
+                        </div>
+
+                    </section>
+                    
+                    <section>
+                        <p>Everything is an expression in CoffeeScript, and this also applies to loops:</p>
+                        <pre><code>
+countdown  = (x for x in [10..1])
+#countdown  = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+                        </code></pre>
+                        <p class="fragment roll-in">Does it look familiar?</p>
+                        <pre class="fragment roll-in"><code>
+yearsOld =
+    max: 10
+    ida: 9
+    tim: 11
+
+ages = for child, age of yearsOld
+    "#{child} is #{age}"
+
+# ages = ["max is 10", "ida is 9", "tim is 11"]
+                        </code></pre>
+                    </section>
+                    
+                    <section>
+                        <h3>There is more!</h3>
+
+                        <pre class="fragment roll-in"><code>
+# when
+shortNames = (name for name in list when name.length < 5)
+                        </code></pre>
+
+                        <pre class="fragment roll-in"><code>
+# by
+numbers = (number in [0..100] by 10)
+                        </code></pre>
+
+                        <pre class="fragment roll-in"><code>
+# own
+foo = (value for own key, value of object)
+                        </code></pre>
+
+                    </section>
+
+                </section>
+
+                <section>
+                    
+                    <section>
+                        <h1>The Existential Operator</h1>
+                    </section>
+                    
+                    <section>
+                        <p>The Existential Operator checks for the existence of a variable</p>
+                        <pre class="fragment roll-in"><code>
+myValue1 = 'Hello World'
+
+if myValue1? then console.log myValue1
+
+if myValue2? then console.log myValue2
+# myValue2 doesn't exist
+                        </code></pre>
+
+                        <pre class="fragment roll-in"><code>
+kids =
+    brother:
+        name: "Max"
+        age:  11
+
+if kids.sister?.name then say('hi') else showError()
+                        </code></pre>
+                        
+                    </section>
+                    
+                </section>
+
+                <section>
+                    <section>
+                        <h1>Destructuring Assignment</h1>
+                    </section>
+
+                    <section>
+                        <p>Similar idea to unpacking in Python</p>
+                        <pre><code>
+    weatherReport = (place) -> [place, 4, "Always miserable!"]
+
+    [city, temp, forecast] = weatherReport("Edinburgh")
+
+    # city = "Edinburgh"
+    # temp = 4
+    # forecast = "Always miserable!"
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+
+                    <section>
+                        <h1>Classes, Inheritance</h1>
+                    </section>
+
+                    <section>
+<!--                         <p>
+                            <a target="_blank" href="http://coffeescript.org/#try:class%20Animal%0A%20%20%20%20constructor%3A%20(%40petName%2C%20%40animal)%20-%3E%0A%0A%20%20%20%20speak%3A%20(say)%20%20-%3E%0A%20%20%20%20%20%20%20%20alert(%22%23%7B%40petName%7D%20the%20%23%7B%40animal%7D%20says%3A%20%23%7Bsay%7D%22)%0A%0Aclass%20Dog%20extends%20Animal%0A%20%20%20%20constructor%3A%20(petName)%20-%3E%0A%20%20%20%20%20%20%20%20super(petName%2C%20'dog')%0A%0A%20%20%20%20speak%3A%20-%3E%0A%20%20%20%20%20%20%20%20super('woof')%0A%0Aclass%20Cat%20extends%20Animal%0A%20%20%20%20constructor%3A%20(petName)%20-%3E%0A%20%20%20%20%20%20%20%20super(petName%2C%20'cat')%0A%0A%20%20%20%20speak%3A%20-%3E%0A%20%20%20%20%20%20%20%20super('meow')%0A%0Awillow%20%3D%20new%20Cat('Willow')%0Awillow.speak()%0A%0Afido%20%3D%20new%20Dog('Fido')%0Afido.speak()">Let's talk animals...</a>
+                        </p> -->
+                        <p>In Javascript you need to repetitvely add your methods to the prototype.</p>
+                        <p>It's pretty awkward to emulate <span style="color: orange;">super()</span> method in JavaScript.</p>
+                        <p>Coffeescript provides a basic <span style="color: teal;">class</span> structure.</p>
+                    </section>
+
+                    <section>
+                        <pre><code style="max-height: 600px; font-size: 0.9em;">
+class Animal
+    constructor: (@petName, @animal) ->
+
+    speak: (say)  ->
+        alert("#{@petName} the #{@animal} says: #{say}")
+
+class Dog extends Animal
+    constructor: (petName) ->
+        super(petName, 'dog')
+
+    speak: -> super('woof')
+
+class Cat extends Animal
+    constructor: (petName) ->
+        super(petName, 'cat')
+
+    speak: -> super('meow')
+
+willow = new Cat('Willow')
+willow.speak()
+
+fido = new Dog('Fido')
+fido.speak()
+                        </code></pre>
+
+                    </section>
+
+                </section>
+
+                <section>
+
+                    <section>
+                        <h1>Debugging</h1>
+                    </section>
+
+                    <section>
+                        <a target="_blank" href="http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/">Source maps introduction</a>
+                        <a target="_blank" href="http://ryanflorence.com/2012/coffeescript-source-maps/">Source maps with CoffeeScript</a>
+                    </section>
+
+                    <section>
+                        <a target="_blank" href="https://github.com/showell/CoffeeScriptLineMatcher">CoffeeScriptLineMatcher</a>
+                    </section>
+
+                </section>
+
+                <section>
+
+                    <section>
+                        <h1>Traps!</h1>
+                        <img src="images/trap.jpg" height="382" width="600">
+                    </section>
+
+                    <section>
+                        
+                        <p>Significant whitespace</p>
+                        <pre class="fragment roll-in"><code>
+(a, b) -> a + b
+(a, b) -> a +b
+                        </code></pre>
+                        
+                        <p class="fragment roll-in">Optional curly brackets</p>
+                        <pre class="fragment roll-in"><code>
+action({key: value}, {option: value})
+// action({key: value}, {option: value});
+action(key: value, option: value)
+// action({key: value, option: value});
+                        </code></pre>
+
+                        <p class="fragment roll-in">Because you can</p>
+                        <pre class="fragment roll-in" style="font-size: 14px;"><code>
+(n) -> (p.push i for i in [2..n] when not (j for j in (p or p=[]) when i%j == 0)[0]) and n in p
+                        </code></pre>
+
+                    </section>
+
+                </section>
+
+                <section>
+                    <h1>Learn JavaScript, use CoffeeScript</h1>
+                    <h2>Thank You!</h2>
+                </section>
+
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                keyboard: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
